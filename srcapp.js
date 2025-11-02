@@ -25,7 +25,11 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB连接成功'))
+.then(() => {
+  console.log('MongoDB连接成功');
+  // 初始化数据库
+  require('./utils/init')();
+})
 .catch(err => console.error('MongoDB连接失败:', err));
 
 // 路由
